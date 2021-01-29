@@ -5,7 +5,7 @@ actual working code, and definitely isn't an example of how to do this successfu
 
 This project is intended to show a simplified version of trouble I've been running into using
 an existing, large third-party C library with callbacks. Most of the calls using JNA in that
-library work, but any with callbacks lead to a crash.
+library work, but any with callbacks leading to a hard crash.
 
 ### graalvm-native-callback-basic
 
