@@ -12,7 +12,7 @@ library work, but any with callbacks lead to a crash.
 The `graalvm-native-callback-basic` projects demonstrates a small callback library and has two scripts
 to run it. Both of these use the `ghcr.io/graalvm/graalvm-ce:java8-21.0.0` Docker image.
 
-- `run-java.sh` builds and runs the project in a Docker container using the standard Java runtime
+- `run-java.sh` builds and runs the project in a Docker container using the provided Java runtime
 - `run-native-image.sh` builds and runs using the GraalVM native image
 
 The expected output, as seen from `run-java.sh` is:
