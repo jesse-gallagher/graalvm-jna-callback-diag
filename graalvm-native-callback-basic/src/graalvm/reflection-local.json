@@ -1,0 +1,4 @@
+[
+	{ "name": "com.example.graalvm.callback.Main$ExampleLibrary", "allDeclaredMethods": true, "allPublicMethods": true },
+	{ "name": "com.example.graalvm.callback.Main$CallMeFunc", "allDeclaredMethods": true, "allPublicMethods": true }
+]

@@ -1,0 +1,84 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.example</groupId>
+	<artifactId>graalvm-native-callback-basic</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	
+	<properties>
+		<maven.compiler.source>8</maven.compiler.source>
+		<maven.compiler.target>8</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	
+		<mainClassKeep>com.example.graalvm.callback.Main</mainClassKeep>
+		<graal.version>21.0.0</graal.version>
+	</properties>
+	
+	<dependencies>
+		<dependency>
+			<groupId>org.graalvm.nativeimage</groupId>
+			<artifactId>svm</artifactId>
+			<version>${graal.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>net.java.dev.jna</groupId>
+			<artifactId>jna</artifactId>
+			<version>5.6.0</version>
+		</dependency>
+	</dependencies>
+	
+	<build>
+		<plugins>
+			<!-- Basic Java build -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>3.2.2</version>
+				
+				<executions>
+					<execution>
+						<id>build-jar</id>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<!-- Native image build -->
+			<plugin>
+				<groupId>org.graalvm.nativeimage</groupId>
+				<artifactId>native-image-maven-plugin</artifactId>
+				<version>${graal.version}</version>
+				<configuration>
+					<imageName>graalvm-test</imageName>
+					<mainClass>${mainClassKeep}</mainClass>
+					<buildArgs>
+						-H:ReflectionConfigurationFiles=${project.basedir}/src/graalvm/reflection-core.json
+						-H:ReflectionConfigurationFiles=${project.basedir}/src/graalvm/reflection-jna.json
+						-H:ReflectionConfigurationFiles=${project.basedir}/src/graalvm/reflection-local.json
+						-H:JNIConfigurationFiles=${project.basedir}/src/graalvm/jni-config.json
+						-H:ResourceConfigurationFiles=${project.basedir}/src/graalvm/resource-config.json
+						-H:DynamicProxyConfigurationFiles=${project.basedir}/src/graalvm/proxy-config.json
+						-H:+ReportExceptionStackTraces
+						-H:+JNI
+						--no-fallback
+						--initialize-at-build-time=com.example.graalvm.callback
+					</buildArgs>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>native-image</goal>
+						</goals>
+						<phase>package</phase>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

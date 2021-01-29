@@ -1,0 +1,6 @@
+[
+	{ "name": "java.lang.reflect.Method", "allDeclaredMethods": true, "allPublicMethods": true },
+	{ "name": "java.nio.Buffer", "allDeclaredMethods": true, "allPublicMethods": true },
+	{ "name": "java.lang.Object", "allDeclaredMethods": true, "allPublicMethods": true },
+	{ "name": "java.lang.Throwable", "allDeclaredMethods": true, "allPublicMethods": true }
+]
