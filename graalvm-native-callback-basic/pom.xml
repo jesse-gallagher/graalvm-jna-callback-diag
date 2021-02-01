@@ -58,12 +58,6 @@
 					<imageName>graalvm-test</imageName>
 					<mainClass>${mainClassKeep}</mainClass>
 					<buildArgs>
-						-H:ReflectionConfigurationFiles=${project.basedir}/src/graalvm/reflection-core.json
-						-H:ReflectionConfigurationFiles=${project.basedir}/src/graalvm/reflection-jna.json
-						-H:ReflectionConfigurationFiles=${project.basedir}/src/graalvm/reflection-local.json
-						-H:JNIConfigurationFiles=${project.basedir}/src/graalvm/jni-config.json
-						-H:ResourceConfigurationFiles=${project.basedir}/src/graalvm/resource-config.json
-						-H:DynamicProxyConfigurationFiles=${project.basedir}/src/graalvm/proxy-config.json
 						-H:+ReportExceptionStackTraces
 						-H:+JNI
 						--no-fallback
