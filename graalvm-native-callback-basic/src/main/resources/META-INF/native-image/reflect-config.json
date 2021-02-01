@@ -10,11 +10,8 @@
 },
 {
   "name":"java.lang.Object",
-  "methods":[
-    {"name":"equals","parameterTypes":["java.lang.Object"] }, 
-    {"name":"hashCode","parameterTypes":[] }, 
-    {"name":"toString","parameterTypes":[] }
-  ]
+  "allDeclaredMethods":true,
+  "allPublicMethods":true
 },
 {
   "name":"java.lang.Throwable",
